@@ -9,6 +9,8 @@ Almost certainly only useful for Mac.
 
 ### Dependencies
 
+Only Ruby 2.3+ is supported.
+
 This tool relies on various bits of software to do the various bits of things it does...
 
 - `pyrocksmith` (https://github.com/0x0L/rocksmith)
