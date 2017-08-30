@@ -1,9 +1,9 @@
-require "rsgt"
-
 unless ENV["NO_COVERALLS"]
   require "coveralls"
   Coveralls.wear!
 end
+
+require "rsgt"
 
 RSpec.configure do |config|
   config.filter_run :focus

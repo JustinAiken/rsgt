@@ -1,3 +1,5 @@
+[![Gem Version](http://img.shields.io/gem/v/rsgt.svg)](https://rubygems.org/gems/rsgt)[![Build Status](http://img.shields.io/travis/JustinAiken/rsgt/master.svg)](http://travis-ci.org/JustinAiken/rsgt)[![Coveralls branch](http://img.shields.io/coveralls/JustinAiken/rsgt/master.svg)](https://coveralls.io/r/JustinAiken/rsgt?branch=master)
+
 # Rocksmith Guitar Tech
 
 Ruby 💎 tool for working with rocksmith songs, DLC, and profile data.
