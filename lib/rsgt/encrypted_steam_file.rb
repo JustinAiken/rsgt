@@ -16,7 +16,7 @@ module RSGuitarTech
     ].pack('C*')
 
     def decrypted
-      aes = OpenSSL::Cipher::Cipher.new 'AES-256-ECB'
+      aes = cipher_klass.new "AES-256-ECB"
       aes.decrypt
       aes.key     = KEY
       aes.padding = 0
@@ -25,7 +25,7 @@ module RSGuitarTech
     end
 
     def encrypted
-      aes = OpenSSL::Cipher::Cipher.new 'AES-256-ECB'
+      aes = cipher_klass.new "AES-256-ECB"
       aes.encrypt
       aes.key     = KEY
       aes.padding = 0
@@ -39,6 +39,12 @@ module RSGuitarTech
 
     def uncompressed_json
       JSON.parse uncompressed.strip
+    end
+
+  private
+
+    def cipher_klass
+      defined?(OpenSSL::Cipher) ? OpenSSL::Cipher : OpenSSL::Cipher::Cipher
     end
   end
 end
