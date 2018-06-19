@@ -54,7 +54,7 @@ rsgt extract-audio --psarc=ragekilling_m.psarc
 rsgt \
   repack \
   --psarc=ragekilling_m.psarc \
-  --xml=ragebomb_vocals.xml \
+  --vocals-xml=ragebomb_vocals.xml \
   --audio=fixed.wav
 ```
 
@@ -66,7 +66,7 @@ You can also repack the preview if you want:
 rsgt \
   repack \
   --psarc=ragekilling_m.psarc \
-  --xml=ragebomb_vocals.xml \
+  --vocals-xml=ragebomb_vocals.xml \
   --audio=fixed.wav \
   --preview \
   --chorus=45
