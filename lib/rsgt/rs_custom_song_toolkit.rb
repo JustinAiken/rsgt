@@ -1,14 +1,14 @@
 module RSGuitarTech
   class RSCustomSongToolkit
 
-    PCB_PATH = "/Applications/RocksmithCustomSongToolkit.app/Contents/Resources/packed_codebooks_aoTuV_603.bin"
+    PCB_PATH = "/Applications/RocksmithCustomSongToolkit.app/Contents/Resources/tools/packed_codebooks_aoTuV_603.bin"
 
     def self.ww2ogg(file)
-      base_cmd "ww2ogg", [file, "--pcb", PCB_PATH]
+      base_cmd "tools/ww2ogg", [file, "--pcb", PCB_PATH]
     end
 
     def self.revorb(file)
-      base_cmd "revorb", [file]
+      base_cmd "tools/revorb", [file]
     end
 
     def self.sng2xml(manifest:, input:)

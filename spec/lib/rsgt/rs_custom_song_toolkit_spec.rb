@@ -6,7 +6,7 @@ describe RSGuitarTech::RSCustomSongToolkit do
   it ".ww2ogg" do
     expect(rs_custom.ww2ogg "foo.wem").to eq [
       "wine",
-      "/Applications/RocksmithCustomSongToolkit.app/Contents/Resources/ww2ogg.exe",
+      "/Applications/RocksmithCustomSongToolkit.app/Contents/Resources/tools/ww2ogg.exe",
       "foo.wem",
       "--pcb",
       described_class::PCB_PATH
@@ -16,7 +16,7 @@ describe RSGuitarTech::RSCustomSongToolkit do
   it ".revorb" do
     expect(rs_custom.revorb "foo.ogg").to eq [
       "wine",
-      "/Applications/RocksmithCustomSongToolkit.app/Contents/Resources/revorb.exe",
+      "/Applications/RocksmithCustomSongToolkit.app/Contents/Resources/tools/revorb.exe",
       "foo.ogg"
     ]
   end
