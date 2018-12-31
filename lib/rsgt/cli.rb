@@ -3,7 +3,7 @@ require "optimist"
 module RSGuitarTech
   class CLI
 
-    SUB_COMMANDS = %w(extract-vocals extract-audio repack shift multipack)
+    SUB_COMMANDS = %w(extract-vocals extract-audio repack multipack)
 
     TOP_BANNER = <<~STRING
       Tool to work with RS DLC and saves
@@ -19,7 +19,6 @@ module RSGuitarTech
        extract-vocals: Extract a .xml of the vocals for editing
        extract-audio:  Extract the audio track as an .ogg (ie, to use as guide track)
        repack:         Repack altered lyrics/audio into a psarc
-       shift:          Shift a .wav by ms
        multipack:      Repack multiple PSARCs into a single PSARC
     STRING
 
@@ -58,13 +57,6 @@ module RSGuitarTech
           opt :chorus,     "Seconds in to start the preview",             type: :string,  default: "30"
           opt :output,     "Optional place to output the repacked psarc", type: :string
         end
-      when "shift"
-        Optimist::options do
-          banner "Shift a .WAV file by given MS"
-          opt :wav,    "WAV file to shift",                        type: :string, required: true
-          opt :dir,    "Direction to shift (forward or backward)", type: :string, required: true
-          opt :amount, "Amount in MS",                             type: :string, required: true
-        end
       when "multipack"
         Optimist::options do
           banner "Repack multiple PSARCs into a single PSARC"
@@ -81,7 +73,6 @@ module RSGuitarTech
       when "extract-vocals" then VocalsExtractor.new(cmd_opts).extract!
       when "extract-audio"  then AudioExtractor.new(cmd_opts).extract!
       when "repack"         then Repacker.new(cmd_opts).repack!
-      when "shift"          then WavShifter.new(cmd_opts).shift!
       when "multipack"      then Multipacker::ConfigProcessor.new(cmd_opts).process!
       end
     end
