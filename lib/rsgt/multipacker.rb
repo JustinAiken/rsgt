@@ -26,7 +26,8 @@ module RSGuitarTech
       ensure_dir! repack_dir
       unpack!
       if count[:skipped] >= count[:total]
-        puts "All done! No new files found to repack"
+        puts ""
+        puts "✅ All done! No new files found to repack"
         return
       end
       repack!
@@ -52,7 +53,7 @@ module RSGuitarTech
     end
 
     def repack!
-      puts "Packing #{count[:total]} songs into #{repack_dir}.psarc"
+      puts Rainbow("Packing #{count[:total]} songs into #{repack_dir}.psarc").green
       shell_out %Q{pyrocksmith --no-crypto --pack "#{repack_dir}"}
     end
 
@@ -74,7 +75,7 @@ module RSGuitarTech
         return true
       end
 
-      puts "Unpacking #{dlc} (#{base_name})"
+      puts Rainbow("Unpacking #{dlc} (#{base_name})").green
 
       return false unless shell_out %Q{pyrocksmith --no-crypto --unpack "#{dlc}"}
       return false unless shell_out %Q{mv "#{base_name}/" #{unpack_dir}/}
