@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.executables     = s.files.grep(%r{^bin/}).map { |f| File.basename(f) }
 
   s.add_dependency "bindata",       "~> 2.4"
-  s.add_dependency "trollop",       "~> 2.1"
+  s.add_dependency "optimist",      "~> 3.0.0"
   s.add_dependency "rainbow",       "~> 2.2"
   s.add_dependency "activesupport", ">= 3.0"
 

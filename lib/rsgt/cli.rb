@@ -1,4 +1,4 @@
-require "trollop"
+require "optimist"
 
 module RSGuitarTech
   class CLI
@@ -24,7 +24,7 @@ module RSGuitarTech
     STRING
 
     def self.parse(args)
-      global_opts = Trollop::options do
+      global_opts = Optimist::options do
         banner TOP_BANNER
         opt :verbose, "More output", short: "-v"
         banner USAGE
@@ -35,19 +35,19 @@ module RSGuitarTech
       cmd = args.shift # get the subcommand
       cmd_opts = case cmd
       when "extract-vocals"
-        Trollop::options do
+        Optimist::options do
           banner "Extracts and converts vocals into an XML"
           opt :psarc,  "PSARC to extract",                type: :string, required: true
           opt :output, "Optional path to output the XML", type: :string
         end
       when "extract-audio"
-        Trollop::options do
+        Optimist::options do
           banner "Extracts and converts the audio track into an .ogg"
           opt :psarc,  "PSARC to extract",                 type: :string, required: true
           opt :output, "Optional path to output the .ogg", type: :string
         end
       when "repack"
-        Trollop::options do
+        Optimist::options do
           banner "Repack a psarc with new vocals XML and/or audio tracks"
           opt :psarc,      "PSARC to repack files into",                  type: :string,  required: true
           opt :vocals_xml, "Vocals XML file to repack",                   type: :string
@@ -59,19 +59,19 @@ module RSGuitarTech
           opt :output,     "Optional place to output the repacked psarc", type: :string
         end
       when "shift"
-        Trollop::options do
+        Optimist::options do
           banner "Shift a .WAV file by given MS"
           opt :wav,    "WAV file to shift",                        type: :string, required: true
           opt :dir,    "Direction to shift (forward or backward)", type: :string, required: true
           opt :amount, "Amount in MS",                             type: :string, required: true
         end
       when "multipack"
-        Trollop::options do
+        Optimist::options do
           banner "Repack multiple PSARCs into a single PSARC"
           opt :config, "Config File", type: :string, required: true
         end
       else
-        Trollop::educate
+        Optimist::educate
       end
 
       RSGuitarTech.verbose = true if global_opts[:verbose]
