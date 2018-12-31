@@ -19,6 +19,7 @@ module RSGuitarTech
     end
 
     def process!
+      puts "-------- #{title} (#{directory}) #{filtered_psarscs.count}/#{psarcs.count} --------"
       reset! unpack_dir if options[:reset_unpack]
       reset! repack_dir if options[:reset_repack]
       ensure_dir! unpack_dir
